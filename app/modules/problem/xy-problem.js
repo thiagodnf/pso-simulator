@@ -20,10 +20,8 @@ define("xy-problem", ["problem"], function(Problem) {
         }
 
         getRangeOfTheVariable(variable){
-            // The function is usually evaluated on the hypercube 
-            // xi in [-5.12, 5.12], for all i = 1, …, d. 
             return {
-                min: -10,
+                min: 0,
                 max: 10
             }
         }
