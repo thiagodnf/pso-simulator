@@ -134,7 +134,7 @@ define([
 
         pso.iterate()
 
-        intervalID = setInterval(start, 50);
+        intervalID = setInterval(start, 100);
     }
 
     function init(){
@@ -194,8 +194,8 @@ define([
 
             svg.selectAll('circle')
                 .data(dataset)
-                //  .transition()
-                //  .duration(200)
+                // .transition()
+                // .duration(0)
                 .attr({
                 cx: function (d) {
                     return xScale(d[0]);
