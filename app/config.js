@@ -30,7 +30,8 @@ requirejs.config({
         "fixed-value-initialization":  "modules/initialization/fixed-value-initialization",
         "random-initialization":  "modules/initialization/random-initialization",
         "problem-range-initialization":  "modules/initialization/problem-range-initialization",
-
+        "uniformly-initialization":  "modules/initialization/uniformly-initialization",
+        
         // Util
         "problem-factory":  "modules/factory/problem-factory",
         "initialization-factory":  "modules/factory/initialization-factory",

@@ -1,11 +1,13 @@
 define("initialization-factory", [
     "fixed-value-initialization",
     "problem-range-initialization",
-    "random-initialization"
+    "random-initialization",
+    "uniformly-initialization"
 ], function(
     FixedValueInitialization,
     ProblemRangeInitialization,
-    RandomInitialization
+    RandomInitialization,
+    UniformlyInitialization,
 ) {
     
     "use strict";
@@ -23,6 +25,8 @@ define("initialization-factory", [
                 return new ProblemRangeInitialization()
             }else if(key == "random-initialization"){
                 return new RandomInitialization(0.0, 1.0)
+            }else if(key == "uniformly-initialization"){
+                return new UniformlyInitialization()
             }
 
             alert("oi")

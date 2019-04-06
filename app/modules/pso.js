@@ -135,8 +135,6 @@ define("pso", [
 
                 //Initialize the particle's position
                 particle.setPosition(this.getInitialPosition(this.problem));
-                //Initialize the particle's position
-                particle.setVelocity(this.getInitialVelocity(this.problem));
                 // Initialize the particle's best known position to its initial position
                 particle.setBestKnown(particle.copy())
                 // Evaluate the particle
@@ -146,7 +144,7 @@ define("pso", [
                     this.swarmsBestKnown = particle.copy();
                 }
                 //Initialize the particle's velocity: vi ~ U(-|bup-blo|, |bup-blo|)
-                this.updateVelocity(particle)
+                particle.setVelocity(this.getInitialVelocity(this.problem));
 
                 this.particles.push(particle)
             }
