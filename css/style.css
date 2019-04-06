@@ -1,0 +1,13 @@
+body{
+    font-family: montserrat,"helvetica neue",helvetica,arial,sans-serif;
+}
+
+nav{
+    margin-bottom: 20px;
+}
+
+svg{
+  border: 1px solid black;
+  width: 100%;
+  height: 400px
+}

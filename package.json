@@ -1,0 +1,26 @@
+{
+	"name": "pso-simulator",
+	"version": "1.0.0",
+	"description": "A Web-based Particle Swarm Optimization Simulator",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"engines": {
+		"node": ">=8.9.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/thiagodnf/pso-simulator.git"
+	},
+	"author": "Thiago Ferreira",
+	"license": "MIT",
+	"homepage": "https://thiagodnf.github.io/pso-simulator",
+	"dependencies": {
+		"serve-static": "^1.13.2",
+		"connect": "^3.6.6",
+		"network": "^0.4.1",
+		"winston": "^2.4.2",
+		"livereload": "^0.7.0"
+	}
+}

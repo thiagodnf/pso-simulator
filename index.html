@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>PSO Simulator</title>
+		<meta name="author" content="Thiago Ferreira">
+		<meta name="description" content="A Web-based Particle Swarm Optimization Simulator">
+		<meta name="keywords" content="pso, particle swarm optimization, simulator">
+		<meta name="robots" content="index, follow">
+
+        <!-- Vendors -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat"/>
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"/>
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <!-- Custom -->
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    </head>
+	<body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container ">
+                <a class="navbar-brand" href="#">PSO Simulator</a>
+            </div>
+        </nav>
+
+        <div class="container ">
+          
+            <div class="row">
+                <div class="col-9">
+                    <svg id="canvas" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" >
+                        
+                    </svg>
+                </div>
+                <div class="col-3">
+                    
+                    <form class="form-optimize">
+                        
+                        <div class="form-group">
+                            <label for="function">Function</label>
+                            <select class="form-control settings" id="function">
+                                <option value="sphere-problem">Sphere</option>
+                                <option value="rastrigin-problem">Rastrigin</option>
+                                <option value="xy-problem">X+Y</option>
+                                <option value="branin-problem">Branin</option>
+                                <option value="rosenbrock-problem">Rosenbrock</option>
+                            </select>
+                        </div>
+                        <hr/>
+                        <div class="form-group">
+                            <label for="population-size ">Population Size</label>
+                            <input type="number" id="population-size" class="form-control settings" required min="10" max="1000" step="1" value="100" autocomplete="off"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="position-initialization">Position Initialization</label>
+                            <select class="form-control settings" id="position-initialization">
+                                <option value="fixed-value-initialization">Fixed Value [v=0]</option>
+                                <option value="random-initialization">Random [0,1]</option>
+                                <option selected value="problem-range-initialization">Problem Range</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="velocity-initialization">Velocity Initialization</label>
+                            <select class="form-control settings" id="velocity-initialization">
+                                <option selected value="fixed-value-initialization">Fixed Value [v=0]</option>
+                                <option value="random-initialization">Random [0,1]</option>
+                                <option value="problem-range-initialization">Problem Range</option>
+                            </select>
+                        </div>
+                    </form>
+                    <div class="btn-group btn-block" role="group">
+                        <button type="button" class="btn btn-outline-primary btn-play">Play</button>
+                        <button type="button" class="btn btn-outline-primary btn-step">Step</button>
+                        <button type="button" class="btn btn-outline-primary btn-stop" disabled>Stop</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vendors -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="app/config"></script>
+        <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    </body>
+</html>
