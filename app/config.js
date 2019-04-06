@@ -24,6 +24,7 @@ requirejs.config({
         "branin-problem":  "modules/problem/branin-problem",
         "rosenbrock-problem":  "modules/problem/rosenbrock-problem",
         "griewank-problem":  "modules/problem/griewank-problem",
+        "easom-problem":  "modules/problem/easom-problem",
         
         // Initialization
         "fixed-value-initialization":  "modules/initialization/fixed-value-initialization",

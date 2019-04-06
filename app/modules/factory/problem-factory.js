@@ -5,6 +5,7 @@ define("problem-factory", [
     "branin-problem",
     "rosenbrock-problem",
     "griewank-problem",
+    "easom-problem"
 ], function(
     SphereProblem,
     RastriginProblem,
@@ -12,6 +13,7 @@ define("problem-factory", [
     BraninProblem,
     RosenbrockProblem,
     GriewankProblem,
+    EasomProblem,
 ) {
     
     "use strict";
@@ -34,6 +36,8 @@ define("problem-factory", [
                 return new RosenbrockProblem()
             }else if(key == "griewank-problem"){
                 return new GriewankProblem()
+            }else if(key == "easom-problem"){
+                return new EasomProblem()
             }
 
             alert("Ooops...! No problem was found")
