@@ -100,7 +100,7 @@ define([
         svg.append('g')
             .attr({
                 class: 'x-axis',
-                transform: 'translate(10,' + (height - padding.bottom) + ')'
+                transform: 'translate(0,' + (height - padding.bottom) + ')'
             })
             .call(xAxis);
         
@@ -153,7 +153,7 @@ define([
         let xRange = problem.getRangeOfTheVariable(0)
         let yRange = problem.getRangeOfTheVariable(1)
         
-        xScale.domain([xRange.min, xRange.max]).range([30, width-padding.right]);
+        xScale.domain([xRange.min, xRange.max]).range([padding.left, width - padding.right]);
         yScale.domain([yRange.min, yRange.max]).range([height - padding.bottom, padding.top + 30]);
 
         updateSVG()
