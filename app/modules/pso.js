@@ -23,6 +23,8 @@ define("pso", [
             this.iterations = 0
             this.c1 = 1;
             this.c2 = 1;
+            this.changeVelocity = false ;
+            this.keepProblemsRange = true
         }
 
         getIterations(){
@@ -43,6 +45,14 @@ define("pso", [
 
         setProblem(problem){
             this.problem = problem
+        }
+
+        setKeepProblemsRange(value){
+            this.keepProblemsRange = value ;
+        }
+
+        setChangeVelocity(value){
+            this.changeVelocity = value ;
         }
 
         getCognitiveComponent(particle){
@@ -70,14 +80,35 @@ define("pso", [
                 let c1 = this.c1;
                 let c2 = this.c1;
 
-                particle.velocity[i] = w*vt + r1*c1*cognitive + r2*c2*social;
+                particle.velocity[i] = w * vt + r1 * c1 * cognitive + r2 * c2 * social;
             }
         }
 
         updatePosition(particle){
 
             for(let i in particle.getPosition()){
+                
                 particle.position[i] = particle.position[i] + particle.velocity[i]
+
+                let range = this.problem.getRangeOfTheVariable(i)
+
+                if (this.keepProblemsRange && particle.position[i] < range.min) {
+                    
+                    particle.position[i] = range.min
+                    
+                    if (this.changeVelocity){
+                        particle.velocity[i] = -0.5 * particle.velocity[i];
+                    }
+                }
+
+                if (this.keepProblemsRange && particle.position[i] > range.max) {
+                    
+                    particle.position[i] = range.max
+                    
+                    if (this.changeVelocity){
+                        particle.velocity[i] = -0.5 * particle.velocity[i];
+                    }
+                }
             }
         }
 

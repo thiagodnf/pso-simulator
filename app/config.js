@@ -8,6 +8,10 @@ requirejs.config({
         "bootstrap": "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min",
         "d3": "https://d3js.org/d3.v3.min",
         
+        //Plugins
+        "jquery-plugin-select":  "plugins/jquery-plugin-select",
+        "jquery-plugin-checkbox":  "plugins/jquery-plugin-checkbox",
+
         // Encoding
         "particle": "modules/encoding/particle",
         "problem":  "modules/encoding/problem",
@@ -36,7 +40,7 @@ requirejs.config({
         "pso": "modules/pso",
     },
     shim: {
-        "bootstrap": ["jquery"],
+        "bootstrap": ["jquery", "jquery-plugin-select", "jquery-plugin-checkbox"],
     }    
 });
 

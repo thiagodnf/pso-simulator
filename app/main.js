@@ -60,8 +60,6 @@ define([
         height: height
     });
 
-    
-    
     function addBestPoints(dataset){
        
         var bestSolutions = svg.append('g')
@@ -95,7 +93,8 @@ define([
         iterations = svg.append('g')
             .append('text')
             .text("0 Iterations")
-            .attr("x", 20)
+            .attr("text-anchor", "middle")
+            .attr("x", width - 60)
             .attr("y", 20)
 
         svg.append('g')
@@ -127,26 +126,6 @@ define([
             .attr('fill', 'red')
             .attr('clip-path', 'url(#chart-area)')
             .selectAll('circle');
-        
-        texts = svg.append('g')
-            .attr('id', 'texts')
-            .attr('clip-path', 'url(#chart-area)')
-            .selectAll('text');
-
-            texts.data([[width/2, height/2]]).enter()
-            .append('text')
-            .text("0 Iterations")
-            .attr({
-                x: function (d) {
-                    return xScale(d[0]);
-                },
-                y: function (d) {
-                    return yScale(d[1]);
-                },
-                r: function (d) {
-                    return 2;
-                }
-            });
     }
 
     function start(){
@@ -162,22 +141,21 @@ define([
 
         pso = new PSO()
 
-        let problem = ProblemFactory.getProblem($('#function').find(":selected").val())
+        let problem = ProblemFactory.getProblem($('#function').getAsText())
 
         pso.setNumberOfParticles($("#population-size").val())
         pso.setProblem(problem)
-        pso.setPositionInitialization(InitializationFactory.getInitialization($('#position-initialization').find(":selected").val()));
-        pso.setVelocityInitialization(InitializationFactory.getInitialization($('#velocity-initialization').find(":selected").val()));
-
+        pso.setPositionInitialization(InitializationFactory.getInitialization($('#position-initialization').getAsText()));
+        pso.setVelocityInitialization(InitializationFactory.getInitialization($('#velocity-initialization').getAsText()));
+        pso.setChangeVelocity($("#change-velocity").isChecked())
+        pso.setKeepProblemsRange($("#keep-problems-range").isChecked())
         
-
         let xRange = problem.getRangeOfTheVariable(0)
         let yRange = problem.getRangeOfTheVariable(1)
         
         xScale.domain([xRange.min, xRange.max]).range([30, width-padding.right]);
         yScale.domain([yRange.min, yRange.max]).range([height - padding.bottom, padding.top + 30]);
 
-        
         updateSVG()
 
         addBestPoints(problem.getBestKnown())
