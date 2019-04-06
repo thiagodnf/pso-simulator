@@ -21,8 +21,8 @@ define("pso", [
             this.velocityInitialization = new FixedValueInitialization(0.0)
             this.w = 0.8;
             this.iterations = 0
-            this.c1 = 1;
-            this.c2 = 1;
+            this.c1 = 1.4;
+            this.c2 = 1.4;
             this.changeVelocity = false ;
             this.keepProblemsRange = true
         }
@@ -53,17 +53,6 @@ define("pso", [
 
         setChangeVelocity(value){
             this.changeVelocity = value ;
-        }
-
-        getCognitiveComponent(particle){
-
-            let value = 0.0;
-
-            for(let i in particle.getPosition()){
-                value ++ 
-            }
-
-            return value;
         }
 
         updateVelocity(particle, inertia){
