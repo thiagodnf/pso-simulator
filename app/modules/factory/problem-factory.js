@@ -4,12 +4,14 @@ define("problem-factory", [
     "xy-problem",
     "branin-problem",
     "rosenbrock-problem",
+    "griewank-problem",
 ], function(
     SphereProblem,
     RastriginProblem,
     XYProblem,
     BraninProblem,
     RosenbrockProblem,
+    GriewankProblem,
 ) {
     
     "use strict";
@@ -30,6 +32,8 @@ define("problem-factory", [
                 return new BraninProblem()
             }else if(key == "rosenbrock-problem"){
                 return new RosenbrockProblem()
+            }else if(key == "griewank-problem"){
+                return new GriewankProblem()
             }
 
             alert("Ooops...! No problem was found")

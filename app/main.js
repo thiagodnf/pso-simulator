@@ -26,9 +26,9 @@ define([
 
     var padding = {
         top: 10,
-        right: 10,
+        right: 20,
         bottom: 30,
-        left: 30,
+        left: 40,
     }
 
     var xScale,
@@ -42,7 +42,7 @@ define([
         height = $("svg").height()
       
     xScale = d3.scale.linear();
-    xScale.domain([xRange[0], xRange[1]]).range([30, width-padding.right]);
+    xScale.domain([xRange[0], xRange[1]]).range([padding.left, width - padding.right]);
     
     yScale = d3.scale.linear();
     yScale.domain([yRange[0], yRange[1]]).range([height - padding.bottom, padding.top + 30]);
@@ -100,14 +100,14 @@ define([
         svg.append('g')
             .attr({
                 class: 'x-axis',
-                transform: 'translate(0,' + (height - padding.bottom) + ')'
+                transform: 'translate(10,' + (height - padding.bottom) + ')'
             })
             .call(xAxis);
         
         svg.append('g')
             .attr({
                 class: 'y-axis',
-                transform: 'translate(' + padding.bottom + ', 0)'
+                transform: 'translate(' + (padding.left) + ', 0)'
             })
             .call(yAxis);
         
@@ -194,9 +194,8 @@ define([
 
             svg.selectAll('circle')
                 .data(dataset)
-                 .transition()
-                 .duration(200)
-                 .ease("linear")
+                //  .transition()
+                //  .duration(200)
                 .attr({
                 cx: function (d) {
                     return xScale(d[0]);
@@ -206,7 +205,7 @@ define([
                 }
             });
 
-            iterations.text(pso.getIterations()+" iterations")
+            iterations.text(pso.getIterations() + " iterations")
         })
 
         pso.init();
@@ -242,6 +241,8 @@ define([
             $(".btn-play").attr("disabled", false);
             $(".btn-step").attr("disabled", false);
             $(".settings").attr("disabled", false);
+
+            console.log(pso.getSwarmsBestKnown())
         });
 
         $('.settings').change(function(event) { 
