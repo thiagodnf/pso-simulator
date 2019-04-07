@@ -20,77 +20,94 @@
     </head>
 	<body>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary  ">
             <div class="container ">
                 <a class="navbar-brand" href="#">PSO Simulator</a>
+
+                <form class="form-inline">
+                    <div class="form-group">
+                        <select class="form-control form-control-sm settings" id="function">
+                            <option value="sphere-problem">Sphere</option>
+                            <option value="rastrigin-problem">Rastrigin</option>
+                            <option value="xy-problem">X+Y</option>
+                            <option value="branin-problem">Branin</option>
+                            <option value="rosenbrock-problem">Rosenbrock</option>
+                            <option value="griewank-problem">Griewank</option>
+                            <option value="easom-problem">Easom</option>
+                        </select>
+                    </div>
+                </form>
             </div>
+            
         </nav>
 
         <div class="container ">
             <div class="row toolbar">
-                <div class="col-12">
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-outline-primary btn-sm btn-play">Play</button>
+                                <button type="button" class="btn btn-outline-primary btn-sm btn-step">Step</button>
+                                <button type="button" class="btn btn-outline-primary btn-sm btn-stop" disabled>Stop</button>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
                     
                 </div>
             </div>
             <div class="row">
-                <div class="col-9">
+                <div class="col-sm-9">
                     <svg id="canvas" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" ></svg>
                 </div>
-                <div class="col-3">
-                    
-                    <form class="form-optimize">
-                        
-                        <div class="form-group">
-                            <label for="function">Function</label>
-                            <select class="form-control form-control-sm settings" id="function">
-                                <option value="sphere-problem">Sphere</option>
-                                <option value="rastrigin-problem">Rastrigin</option>
-                                <option value="xy-problem">X+Y</option>
-                                <option value="branin-problem">Branin</option>
-                                <option value="rosenbrock-problem">Rosenbrock</option>
-                                <option value="griewank-problem">Griewank</option>
-                                <option value="easom-problem">Easom</option>
-                            </select>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-header">Settings</div>
+                        <div class="card-body">
+                            <form class="form-optimize">
+                                <div class="form-group">
+                                    <label for="population-size ">Population Size</label>
+                                    <input type="number" id="population-size" class="form-control form-control-sm settings" required min="10" max="1000" step="1" value="40" autocomplete="off"/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="position-initialization">Position Initialization</label>
+                                    <select class="form-control form-control-sm settings" id="position-initialization">
+                                        <option value="fixed-value-initialization">Fixed Value [v=0]</option>
+                                        <option value="random-initialization">Random [0,1]</option>
+                                        <option selected value="problem-range-initialization">Problem Range</option>
+                                        <option value="uniformly-initialization">Uniformly</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="velocity-initialization">Velocity Initialization</label>
+                                    <select class="form-control form-control-sm settings" id="velocity-initialization">
+                                        <option selected value="fixed-value-initialization">Fixed Value [v=0]</option>
+                                        <option value="random-initialization">Random [0,1]</option>
+                                        <option value="problem-range-initialization">Problem Range</option>
+                                        <option value="uniformly-initialization">Uniformly</option>
+                                    </select>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input settings" id="keep-problems-range" checked>
+                                    <label class="form-check-label" for="keep-problems-range">Keep Problem's Range</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input settings" id="change-velocity">
+                                    <label class="form-check-label" for="change-velocity">Change Velocity</label>
+                                </div>
+                            </form>
                         </div>
-                        <hr/>
-                        <div class="form-group">
-                            <label for="population-size ">Population Size</label>
-                            <input type="number" id="population-size" class="form-control form-control-sm settings" required min="10" max="1000" step="1" value="40" autocomplete="off"/>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="position-initialization">Position Initialization</label>
-                            <select class="form-control form-control-sm settings" id="position-initialization">
-                                <option value="fixed-value-initialization">Fixed Value [v=0]</option>
-                                <option value="random-initialization">Random [0,1]</option>
-                                <option selected value="problem-range-initialization">Problem Range</option>
-                                <option value="uniformly-initialization">Uniformly</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="velocity-initialization">Velocity Initialization</label>
-                            <select class="form-control form-control-sm settings" id="velocity-initialization">
-                                <option selected value="fixed-value-initialization">Fixed Value [v=0]</option>
-                                <option value="random-initialization">Random [0,1]</option>
-                                <option value="problem-range-initialization">Problem Range</option>
-                                <option value="uniformly-initialization">Uniformly</option>
-                            </select>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input settings" id="keep-problems-range" checked>
-                            <label class="form-check-label" for="keep-problems-range">Keep Problem's Range</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input settings" id="change-velocity">
-                            <label class="form-check-label" for="change-velocity">Change Velocity</label>
-                        </div>
-                    </form>
-                    <br>
-                    <div class="btn-group btn-block" role="group">
-                        <button type="button" class="btn btn-outline-primary btn-play">Play</button>
-                        <button type="button" class="btn btn-outline-primary btn-step">Step</button>
-                        <button type="button" class="btn btn-outline-primary btn-stop" disabled>Stop</button>
                     </div>
+
+                    
+                    <br>
+                    
                     
                     
                 </div>
