@@ -36,6 +36,7 @@ define([
         xAxis,
         yAxis,
         iterations,
+        swarmsBestKnown,
         svg,
         circles,
         width = $("svg").width(),
@@ -97,6 +98,13 @@ define([
             .attr("x", width - 60)
             .attr("y", 20)
 
+        swarmsBestKnown = svg.append('g')
+            .append('text')
+            .text("Swarm's Best Known: ")
+            .attr("text-anchor", "start")
+            .attr("x", 20)
+            .attr("y", 20)
+
         svg.append('g')
             .attr({
                 class: 'x-axis',
@@ -153,8 +161,8 @@ define([
         let xRange = problem.getRangeOfTheVariable(0)
         let yRange = problem.getRangeOfTheVariable(1)
         
-        xScale.domain([xRange.min, xRange.max]).range([padding.left, width - padding.right]);
-        yScale.domain([yRange.min, yRange.max]).range([height - padding.bottom, padding.top + 30]);
+        xScale.domain([xRange.min, xRange.max])
+        yScale.domain([yRange.min, yRange.max])
 
         updateSVG()
 
@@ -206,6 +214,7 @@ define([
             });
 
             iterations.text(pso.getIterations() + " iterations")
+            swarmsBestKnown.text("Swarm's Best Known: " + pso.getSwarmsBestKnown().getObjective().toFixed(7))
         })
 
         pso.init();
