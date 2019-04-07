@@ -214,7 +214,7 @@ define([
             });
 
             iterations.text(pso.getIterations() + " iterations")
-            swarmsBestKnown.text("Swarm's Best Known: " + pso.getSwarmsBestKnown().getObjective().toFixed(7))
+            swarmsBestKnown.text("Swarm's Best Known: " + pso.getSwarmsBestKnown().getObjective().toFixed(10))
         })
 
         pso.init();
