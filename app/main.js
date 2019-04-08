@@ -17,19 +17,10 @@ define([
 ) {
 
     let pso = new PSO()
+    let problem
     let intervalID = 0;
     
     $("svg").height($(window).height() - $("svg").offset().top - 20);
-
-    var xRange = [-6, 6];
-    var yRange = [-6, 6];
-
-    var padding = {
-        top: 10,
-        right: 20,
-        bottom: 30,
-        left: 40,
-    }
 
     var xScale,
         yScale,
@@ -42,24 +33,34 @@ define([
         width = $("svg").width(),
         height = $("svg").height()
       
-    xScale = d3.scale.linear();
-    xScale.domain([xRange[0], xRange[1]]).range([padding.left, width - padding.right]);
-    
-    yScale = d3.scale.linear();
-    yScale.domain([yRange[0], yRange[1]]).range([height - padding.bottom, padding.top + 30]);
-    
-    xAxis = d3.svg.axis();
-    xAxis.scale(xScale).orient('bottom').ticks(10);
-    
-    yAxis = d3.svg.axis();
-    yAxis.scale(yScale).orient('left').ticks(10);
-    
-    svg = d3.select('svg');
-    
-    svg.attr({
-        width: width,
-        height: height
-    });
+    var padding = {
+        top: 10,
+        right: 20,
+        bottom: 30,
+        left: 40,
+    }
+
+    function startCanvas(xRange, yRange){
+     
+        xScale = d3.scale.linear();
+        xScale.domain([xRange.min, xRange.max]).range([padding.left, width - padding.right]);
+        
+        yScale = d3.scale.linear();
+        yScale.domain([yRange.min, yRange.max]).range([height - padding.bottom, padding.top + 30]);
+        
+        xAxis = d3.svg.axis();
+        xAxis.scale(xScale).orient('bottom').ticks(10);
+        
+        yAxis = d3.svg.axis();
+        yAxis.scale(yScale).orient('left').ticks(10);
+        
+        svg = d3.select('svg');
+        
+        svg.attr({
+            width: width,
+            height: height
+        });
+    }
 
     function addBestPoints(dataset){
        
@@ -89,6 +90,8 @@ define([
 
     function updateSVG(){
         
+        console.log("Cleaning the SVG Canvas")
+
         svg.html("");
 
         iterations = svg.append('g')
@@ -134,6 +137,8 @@ define([
             .attr('fill', 'red')
             .attr('clip-path', 'url(#chart-area)')
             .selectAll('circle');
+
+        addBestPoints(problem.getBestKnown())
     }
 
     function start(){
@@ -145,11 +150,9 @@ define([
         intervalID = setInterval(start, 100);
     }
 
-    function init(){
+    function loadParameters(){
 
-        pso = new PSO()
-
-        let problem = ProblemFactory.getProblem($('#function').getAsText())
+        console.log("Loading parameters")
 
         pso.setNumberOfParticles($("#population-size").val())
         pso.setProblem(problem)
@@ -157,17 +160,23 @@ define([
         pso.setVelocityInitialization(InitializationFactory.getInitialization($('#velocity-initialization').getAsText()));
         pso.setChangeVelocity($("#change-velocity").isChecked())
         pso.setKeepProblemsRange($("#keep-problems-range").isChecked())
+        pso.setDecreaseInertia($("#decrease-inertia").isChecked())
+        pso.setC1(parseFloat($("#param-c1").val()))
+        pso.setC2(parseFloat($("#param-c2").val()))
+
+        // let xRange = problem.getRangeOfTheVariable(0)
+        // let yRange = problem.getRangeOfTheVariable(1)
         
-        let xRange = problem.getRangeOfTheVariable(0)
-        let yRange = problem.getRangeOfTheVariable(1)
+        // // xScale.domain([xRange.min, xRange.max])
+        // // yScale.domain([yRange.min, yRange.max])
+    }
+
+    function init(){
+
+        console.log("Initializing PSO")
+
+        pso = new PSO()
         
-        xScale.domain([xRange.min, xRange.max])
-        yScale.domain([yRange.min, yRange.max])
-
-        updateSVG()
-
-        addBestPoints(problem.getBestKnown())
-
         pso.setOnInitAlgorithm(function(particles){
 
             let dataset = [];
@@ -217,13 +226,20 @@ define([
             swarmsBestKnown.text("Swarm's Best Known: " + pso.getSwarmsBestKnown().getObjective().toFixed(10))
         })
 
-        pso.init();
+        loadParameters()
+        pso.createParticles();
     }
 
     $(function() {
 
-        init()
+        problem = ProblemFactory.getProblem($('#function').getAsText())
 
+        startCanvas(problem.getRangeOfTheVariable(0), problem.getRangeOfTheVariable(1))
+
+        updateSVG()
+
+        init()
+        
         $(".btn-step").click(function(event){
             event.preventDefault();
 
@@ -236,6 +252,7 @@ define([
             start();
 
             $(".btn-stop").attr("disabled", false);
+            $(".btn-restart").attr("disabled", true);
             $(".btn-play").attr("disabled", true);
             $(".btn-step").attr("disabled", true);
             $(".settings").attr("disabled", true);
@@ -247,19 +264,55 @@ define([
             clearInterval(intervalID);
             
             $(".btn-stop").attr("disabled", true);
+            $(".btn-restart").attr("disabled", false);
             $(".btn-play").attr("disabled", false);
             $(".btn-step").attr("disabled", false);
             $(".settings").attr("disabled", false);
-
-            console.log(pso.getSwarmsBestKnown())
         });
 
-        $('.settings').change(function(event) { 
-            event.preventDefault();
+        $(".btn-restart").click(function(event){
+            updateSVG()
+
+            loadParameters()
             
-            init()
+            pso.restart()
+        });
+
+        $('.create-particles-on-change').change(function(event) { 
+            event.preventDefault();
+
+            updateSVG()
+
+            loadParameters()
+            
+            pso.createParticles()
          });
 
-        
+         $('.init-velocity-on-change').change(function(event) { 
+            pso.initVelocity()
+         });
+
+          $('.change-parameters').change(function(event) { 
+            event.preventDefault()
+            loadParameters()
+          });
+
+        $(".dispatch-change-problem").change(function(event) { 
+            event.preventDefault()
+
+            problem = ProblemFactory.getProblem($('#function').getAsText())
+
+            startCanvas(problem.getRangeOfTheVariable(0), problem.getRangeOfTheVariable(1))
+
+            updateSVG()
+
+            init()
+        });
+
+        $(".dispatch-velocity-initialization").change(function(event) { 
+            event.preventDefault()
+
+            loadParameters()
+        });
     });
 });
