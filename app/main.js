@@ -224,6 +224,11 @@ define([
 
             iterations.text(pso.getIterations() + " iterations");
             swarmsBestKnown.text("Swarm's Best Known: " + pso.getSwarmsBestKnown().getObjective().toFixed(10));
+
+            $(".iterations-counter").text(pso.getIterations());
+            $(".best-known").text(pso.getSwarmsBestKnown().getObjective().toFixed(10));
+
+            
         });
 
         loadParameters();
