@@ -49,83 +49,92 @@
                     <svg id="canvas" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" ></svg>
                 </div>
                 <div class="col-sm-3">
-                    <div class="card">
-                        <div class="card-header">Settings</div>
-                        <div class="card-body">
-                            <form class="form-optimize">
-                                
-                                <div class="mb-3">
-                                    <label for="function" class="form-label">Function</label>
-                                    <select class="form-select form-select-sm settings dispatch-change-problem d-inline" id="function">
-                                        <option value="sphere-problem">Sphere</option>
-                                        <option value="rastrigin-problem">Rastrigin</option>
-                                        <option value="xy-problem">X+Y</option>
-                                        <option value="branin-problem">Branin</option>
-                                        <option value="rosenbrock-problem">Rosenbrock</option>
-                                        <option value="griewank-problem">Griewank</option>
-                                        <option value="easom-problem">Easom</option>
-                                    </select>
 
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="population-size" class="form-label">Population Size</label>
-                                    <input type="number" id="population-size" class="form-control form-control-sm create-particles-on-change settings" required min="10" max="1000" step="1" value="40" autocomplete="off"/>
-                                </div>
-                                
-                                <div class="row mb-3">
-                                    <div class="col-6">
-                                        <div>
-                                            <label for="param-c1" class="form-label">C1</label>
-                                            <input type="number" id="param-c1" class="form-control form-control-sm change-parameters" required min="0.0" max="5" step="0.01" value="1.4" autocomplete="off"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div>
-                                            <label for="param-c2" class="form-label">C2</label>
-                                            <input type="number" id="param-c2" class="form-control form-control-sm change-parameters" required min="0.0" max="5" step="0.01" value="1.4" autocomplete="off"/>
-                                        </div>
+                    <div id="sidebar" class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                    <button  class="nav-link active" data-toggle="tab" data-bs-toggle="tab" data-bs-target="#info" data-i18n="info">Info</button >
+                                </li>
+                                <li class="nav-item">
+                                    <button  class="nav-link" data-bs-toggle="tab" data-bs-target="#parameters" data-i18n="parameters">Parameters</button >
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body overflow-auto">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="info">
+                                    <div class="mb-3">
+                                        <label for="function" class="form-label">Function</label>
+                                        <select class="form-select form-select-sm settings dispatch-change-problem d-inline" id="function">
+                                            <option value="sphere-problem">Sphere</option>
+                                            <option value="rastrigin-problem">Rastrigin</option>
+                                            <option value="xy-problem">X+Y</option>
+                                            <option value="branin-problem">Branin</option>
+                                            <option value="rosenbrock-problem">Rosenbrock</option>
+                                            <option value="griewank-problem">Griewank</option>
+                                            <option value="easom-problem">Easom</option>
+                                        </select>
                                     </div>
                                 </div>
-                                
-                                <div class="mb-3">
-                                    <label for="position-initialization" class="form-label">Position Initialization</label>
-                                    <select class="form-control form-control-sm settings create-particles-on-change" id="position-initialization">
-                                        <option value="fixed-value-initialization">Fixed Value [v=0]</option>
-                                        <option value="random-initialization">Random [0,1]</option>
-                                        <option selected value="problem-range-initialization">Problem Range</option>
-                                        <option value="uniformly-initialization">Uniformly</option>
-                                    </select>
+                                <div class="tab-pane fade" id="parameters">
+                                    <form class="form-optimize">
+                               
+                                        <div class="mb-3">
+                                            <label for="population-size" class="form-label">Population Size</label>
+                                            <input type="number" id="population-size" class="form-control form-control-sm create-particles-on-change settings" required min="10" max="1000" step="1" value="40" autocomplete="off"/>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <div>
+                                                    <label for="param-c1" class="form-label">C1</label>
+                                                    <input type="number" id="param-c1" class="form-control form-control-sm change-parameters" required min="0.0" max="5" step="0.01" value="1.4" autocomplete="off"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div>
+                                                    <label for="param-c2" class="form-label">C2</label>
+                                                    <input type="number" id="param-c2" class="form-control form-control-sm change-parameters" required min="0.0" max="5" step="0.01" value="1.4" autocomplete="off"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="position-initialization" class="form-label">Position Initialization</label>
+                                            <select class="form-control form-control-sm settings create-particles-on-change" id="position-initialization">
+                                                <option value="fixed-value-initialization">Fixed Value [v=0]</option>
+                                                <option value="random-initialization">Random [0,1]</option>
+                                                <option selected value="problem-range-initialization">Problem Range</option>
+                                                <option value="uniformly-initialization">Uniformly</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="velocity-initialization" class="form-label">Velocity Initialization</label>
+                                            <select class="form-control form-control-sm settings dispatch-velocity-initialization should-fire-init" id="velocity-initialization">
+                                                <option selected value="fixed-value-initialization">Fixed Value [v=0]</option>
+                                                <option value="random-initialization">Random [0,1]</option>
+                                                <option value="problem-range-initialization">Problem Range</option>
+                                                <option value="uniformly-initialization">Uniformly</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input settings change-parameters" id="keep-problems-range" checked>
+                                            <label class="form-check-label" for="keep-problems-range">Keep Problem's Range</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input settings change-parameters" id="change-velocity">
+                                            <label class="form-check-label" for="change-velocity">Change Velocity</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input settings change-parameters" id="decrease-inertia" checked>
+                                            <label class="form-check-label" for="decrease-inertia">Decrease Inertia</label>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="velocity-initialization" class="form-label">Velocity Initialization</label>
-                                    <select class="form-control form-control-sm settings dispatch-velocity-initialization should-fire-init" id="velocity-initialization">
-                                        <option selected value="fixed-value-initialization">Fixed Value [v=0]</option>
-                                        <option value="random-initialization">Random [0,1]</option>
-                                        <option value="problem-range-initialization">Problem Range</option>
-                                        <option value="uniformly-initialization">Uniformly</option>
-                                    </select>
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input settings change-parameters" id="keep-problems-range" checked>
-                                    <label class="form-check-label" for="keep-problems-range">Keep Problem's Range</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input settings change-parameters" id="change-velocity">
-                                    <label class="form-check-label" for="change-velocity">Change Velocity</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input settings change-parameters" id="decrease-inertia" checked>
-                                    <label class="form-check-label" for="decrease-inertia">Decrease Inertia</label>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-
-                    
-                    <br>
-                    
-                    
                     
                 </div>
             </div>
