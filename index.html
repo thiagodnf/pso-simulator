@@ -24,16 +24,8 @@
                 <a class="navbar-brand" href="#">PSO Simulator</a>
 
                 <form class="form-inline">
-                    <div class="form-group">
-                        <select class="form-control form-control-sm settings dispatch-change-problem" id="function">
-                            <option value="sphere-problem">Sphere</option>
-                            <option value="rastrigin-problem">Rastrigin</option>
-                            <option value="xy-problem">X+Y</option>
-                            <option value="branin-problem">Branin</option>
-                            <option value="rosenbrock-problem">Rosenbrock</option>
-                            <option value="griewank-problem">Griewank</option>
-                            <option value="easom-problem">Easom</option>
-                        </select>
+                    <div>
+                        
                     </div>
                 </form>
             </div>
@@ -43,23 +35,13 @@
         <div class="container-fluid">
 
             <div class="row toolbar">
-                <div class="col-9">
-                    <div class="row">
-                        <div class="col-9">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-success btn-sm btn-play"><i class="fas fa-play"></i> Play</button>
-                                <button type="button" class="btn btn-success btn-sm btn-step"><i class="fas fa-step-forward"></i> Step</button>
-                                <button type="button" class="btn btn-success btn-sm btn-stop" disabled><i class="fas fa-stop"></i> Stop</button>
-                                <button type="button" class="btn btn-success btn-sm btn-restart"><i class="fas fa-redo"></i> Restart</button>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            
-                        </div>
+                <div class="d-flex justify-content-between">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-success btn-sm btn-play"><i class="fas fa-play"></i> Play</button>
+                        <button type="button" class="btn btn-success btn-sm btn-step"><i class="fas fa-step-forward"></i> Step</button>
+                        <button type="button" class="btn btn-success btn-sm btn-stop" disabled><i class="fas fa-stop"></i> Stop</button>
+                        <button type="button" class="btn btn-success btn-sm btn-restart"><i class="fas fa-redo"></i> Restart</button>
                     </div>
-                </div>
-                <div class="col-3">
-                    
                 </div>
             </div>
             <div class="row">
@@ -71,6 +53,21 @@
                         <div class="card-header">Settings</div>
                         <div class="card-body">
                             <form class="form-optimize">
+                                
+                                <div class="mb-3">
+                                    <label for="function" class="form-label">Function</label>
+                                    <select class="form-select form-select-sm settings dispatch-change-problem d-inline" id="function">
+                                        <option value="sphere-problem">Sphere</option>
+                                        <option value="rastrigin-problem">Rastrigin</option>
+                                        <option value="xy-problem">X+Y</option>
+                                        <option value="branin-problem">Branin</option>
+                                        <option value="rosenbrock-problem">Rosenbrock</option>
+                                        <option value="griewank-problem">Griewank</option>
+                                        <option value="easom-problem">Easom</option>
+                                    </select>
+
+                                </div>
+
                                 <div class="mb-3">
                                     <label for="population-size" class="form-label">Population Size</label>
                                     <input type="number" id="population-size" class="form-control form-control-sm create-particles-on-change settings" required min="10" max="1000" step="1" value="40" autocomplete="off"/>
@@ -85,7 +82,7 @@
                                     </div>
                                     <div class="col-6">
                                         <div>
-                                            <label for="param-c1" class="form-label">C2</label>
+                                            <label for="param-c2" class="form-label">C2</label>
                                             <input type="number" id="param-c2" class="form-control form-control-sm change-parameters" required min="0.0" max="5" step="0.01" value="1.4" autocomplete="off"/>
                                         </div>
                                     </div>
