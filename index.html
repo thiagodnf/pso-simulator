@@ -72,28 +72,28 @@
                         <div class="card-header">Settings</div>
                         <div class="card-body">
                             <form class="form-optimize">
-                                <div class="form-group">
-                                    <label for="population-size">Population Size</label>
+                                <div class="mb-3">
+                                    <label for="population-size" class="form-label">Population Size</label>
                                     <input type="number" id="population-size" class="form-control form-control-sm create-particles-on-change settings" required min="10" max="1000" step="1" value="40" autocomplete="off"/>
                                 </div>
                                 
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="param-c1">C1</label>
+                                        <div>
+                                            <label for="param-c1" class="form-label">C1</label>
                                             <input type="number" id="param-c1" class="form-control form-control-sm change-parameters" required min="0.0" max="5" step="0.01" value="1.4" autocomplete="off"/>
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="param-c1">C2</label>
+                                        <div>
+                                            <label for="param-c1" class="form-label">C2</label>
                                             <input type="number" id="param-c2" class="form-control form-control-sm change-parameters" required min="0.0" max="5" step="0.01" value="1.4" autocomplete="off"/>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div class="form-group">
-                                    <label for="position-initialization">Position Initialization</label>
+                                <div class="mb-3">
+                                    <label for="position-initialization" class="form-label">Position Initialization</label>
                                     <select class="form-control form-control-sm settings create-particles-on-change" id="position-initialization">
                                         <option value="fixed-value-initialization">Fixed Value [v=0]</option>
                                         <option value="random-initialization">Random [0,1]</option>
@@ -101,8 +101,8 @@
                                         <option value="uniformly-initialization">Uniformly</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="velocity-initialization">Velocity Initialization</label>
+                                <div class="mb-3">
+                                    <label for="velocity-initialization" class="form-label">Velocity Initialization</label>
                                     <select class="form-control form-control-sm settings dispatch-velocity-initialization should-fire-init" id="velocity-initialization">
                                         <option selected value="fixed-value-initialization">Fixed Value [v=0]</option>
                                         <option value="random-initialization">Random [0,1]</option>
