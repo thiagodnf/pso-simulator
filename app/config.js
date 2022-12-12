@@ -5,7 +5,7 @@ requirejs.config({
     paths: {
         // Vendors
         "jquery": "https://code.jquery.com/jquery-3.3.1.slim.min",
-        "bootstrap": "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min",
+        "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min",
         "d3": "https://d3js.org/d3.v3.min",
         
         //Plugins
