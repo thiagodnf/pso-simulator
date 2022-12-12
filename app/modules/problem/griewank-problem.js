@@ -15,16 +15,16 @@ define("griewank-problem", ["problem"], function(Problem) {
 
             for(let i = 0; i < 2; i++){
 
-                let xi = particle.getPosition()[i]
+                let xi = particle.getPosition()[i];
 
-                sum += Math.pow(xi, 2)
+                sum += Math.pow(xi, 2);
 
                 prod *= Math.cos(xi / Math.sqrt(i + 1));
             }
 
-            let value = 1.0 + ((1.0 / 4000.0) * sum) - prod
+            let value = 1.0 + ((1.0 / 4000.0) * sum) - prod;
 
-            particle.setObjective(value)
+            particle.setObjective(value);
         }
 
         getRangeOfTheVariable(variable){
@@ -32,14 +32,14 @@ define("griewank-problem", ["problem"], function(Problem) {
             return {
                 min: -600,
                 max: 600
-            }
+            };
         }
 
         getBestKnown(){
             return [
                 [0, 0],
-            ]
+            ];
         }
-    }
+    };
 
 });

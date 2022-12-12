@@ -7,7 +7,7 @@ define("fixed-value-initialization", ["initialization"], function(Initialization
         constructor(value){
             super();
 
-            this.value = value
+            this.value = value;
         }
 
         initialize(problem){
@@ -20,5 +20,5 @@ define("fixed-value-initialization", ["initialization"], function(Initialization
                
             return array;
         }
-    }
+    };
 });

@@ -27,21 +27,21 @@ define("problem-factory", [
             if(key == "sphere-problem"){
                 return new SphereProblem();
             }else if(key == "rastrigin-problem"){
-                return new RastriginProblem()
+                return new RastriginProblem();
             }else if(key == "xy-problem"){
-                return new XYProblem()
+                return new XYProblem();
             }else if(key == "branin-problem"){
-                return new BraninProblem()
+                return new BraninProblem();
             }else if(key == "rosenbrock-problem"){
-                return new RosenbrockProblem()
+                return new RosenbrockProblem();
             }else if(key == "griewank-problem"){
-                return new GriewankProblem()
+                return new GriewankProblem();
             }else if(key == "easom-problem"){
-                return new EasomProblem()
+                return new EasomProblem();
             }
 
-            alert("Ooops...! No problem was found")
+            alert("Ooops...! No problem was found");
         }
-    }
+    };
 
 });

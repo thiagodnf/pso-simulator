@@ -13,24 +13,24 @@ define("xy-problem", ["problem"], function(Problem) {
             let sum = 0.0;
             
             for(let i = 0; i < 2; i++){
-                sum += particle.getPosition()[i]
+                sum += particle.getPosition()[i];
             }
 
-            particle.setObjective(sum)
+            particle.setObjective(sum);
         }
 
         getRangeOfTheVariable(variable){
             return {
                 min: 0,
                 max: 10
-            }
+            };
         }
 
         getBestKnown(){
             return [
                 [0,0]
-            ]
+            ];
         }
-    }
+    };
 
 });

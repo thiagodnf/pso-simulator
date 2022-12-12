@@ -7,7 +7,7 @@ define("random", function() {
         constructor(numberOfVariables){
 
             if (this.constructor === Problem) {
-                throw new TypeError('Abstract class "Problem" cannot be instantiated directly.'); 
+                throw new TypeError("Abstract class \"Problem\" cannot be instantiated directly."); 
             }
         }
 
@@ -18,5 +18,5 @@ define("random", function() {
         static randDouble(min, max) {
             return Math.random() * (max - min) + min;
         }
-    }
+    };
 });

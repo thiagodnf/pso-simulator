@@ -22,15 +22,15 @@ define("initialization-factory", [
             if(key == "fixed-value-initialization"){
                 return new FixedValueInitialization(0.0);
             }else if(key == "problem-range-initialization"){
-                return new ProblemRangeInitialization()
+                return new ProblemRangeInitialization();
             }else if(key == "random-initialization"){
-                return new RandomInitialization(0.0, 1.0)
+                return new RandomInitialization(0.0, 1.0);
             }else if(key == "uniformly-initialization"){
-                return new UniformlyInitialization()
+                return new UniformlyInitialization();
             }
 
-            alert("oi")
+            alert("oi");
         }
-    }
+    };
 
 });

@@ -7,13 +7,13 @@ define("initialization", function() {
         constructor(){
 
             if (this.constructor === Initialization) {
-                throw new TypeError('Abstract class "Initialization" cannot be instantiated directly.'); 
+                throw new TypeError("Abstract class \"Initialization\" cannot be instantiated directly."); 
             }
 
             if (this.initialize === undefined) {
-                throw new TypeError('Classes extending Initialization class should implement "initialize" method');
+                throw new TypeError("Classes extending Initialization class should implement \"initialize\" method");
             }
         }
-    }
+    };
 
 });

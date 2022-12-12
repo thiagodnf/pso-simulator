@@ -18,18 +18,18 @@ define("uniformly-initialization", ["initialization", "random"], function(Initia
                 
                 let range = problem.getRangeOfTheVariable(i);
 
-                let blo = range.min
-                let bup = range.max
+                let blo = range.min;
+                let bup = range.max;
                
                 // U(-|bup-blo|
-                let min = -Math.abs(bup - blo)
+                let min = -Math.abs(bup - blo);
                 // |bup-blo|
-                let max = Math.abs(bup - blo)
+                let max = Math.abs(bup - blo);
 
                 array[i] = Random.randDouble(min, max);
             }
                
             return array;
         }
-    }
+    };
 });

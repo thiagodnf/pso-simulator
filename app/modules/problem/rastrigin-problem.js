@@ -11,15 +11,15 @@ define("rastrigin-problem", ["problem"], function(Problem) {
 
         evaluate(particle){
 
-            let n = super.getNumberOfVariables()
+            let n = super.getNumberOfVariables();
             
-            let value = 10 * n
+            let value = 10 * n;
             
             for(let i = 0; i < n; i++){
                 value += Math.pow(particle.getPosition()[i], 2) - 10 * Math.cos(2 * Math.PI * particle.getPosition()[i]);
             }
 
-            particle.setObjective(value)
+            particle.setObjective(value);
         }
 
         getRangeOfTheVariable(variable){
@@ -28,14 +28,14 @@ define("rastrigin-problem", ["problem"], function(Problem) {
             return {
                 min: -5.12,
                 max: 5.12
-            }
+            };
         }
 
         getBestKnown(){
             return [
                 [0,0]
-            ]
+            ];
         }
-    }
+    };
 
 });

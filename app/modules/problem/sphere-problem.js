@@ -16,7 +16,7 @@ define("sphere-problem", ["problem"], function(Problem) {
                 value += Math.pow(particle.getPosition()[i], 2);
             }
 
-            particle.setObjective(value)
+            particle.setObjective(value);
         }
 
         getRangeOfTheVariable(variable){
@@ -25,14 +25,14 @@ define("sphere-problem", ["problem"], function(Problem) {
             return {
                 min: -5.12,
                 max: 5.12
-            }
+            };
         }
 
         getBestKnown(){
             return [
                 [0,0]
-            ]
+            ];
         }
-    }
+    };
 
 });

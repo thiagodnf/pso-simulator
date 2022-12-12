@@ -7,8 +7,8 @@ define("random-initialization", ["initialization", "random"], function(Initializ
         constructor(min, max){
             super();
 
-            this.min = min
-            this.max = max
+            this.min = min;
+            this.max = max;
         }
 
         initialize(problem){
@@ -21,5 +21,5 @@ define("random-initialization", ["initialization", "random"], function(Initializ
                
             return array;
         }
-    }
+    };
 });

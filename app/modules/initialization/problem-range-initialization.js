@@ -21,6 +21,6 @@ define("problem-range-initialization", ["initialization", "random"], function(In
                
             return array;
         }
-    }
+    };
 
 });

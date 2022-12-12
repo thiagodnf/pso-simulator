@@ -6,9 +6,9 @@ define("particle", function() {
 
         constructor(){
             this.objective = Number.MAX_VALUE;
-            this.bestKnown = undefined
-            this.velocity = []
-            this.position = []
+            this.bestKnown = undefined;
+            this.velocity = [];
+            this.position = [];
         }
 
         setBestKnown(bestKnown){
@@ -20,7 +20,7 @@ define("particle", function() {
         }
 
         getVelocity(){
-            return this.velocity
+            return this.velocity;
         }
 
         setVelocity(velocity){
@@ -28,7 +28,7 @@ define("particle", function() {
         }
         
         getPosition(){
-            return this.position
+            return this.position;
         }
 
         setPosition(position){
@@ -36,23 +36,23 @@ define("particle", function() {
         }
 
         getObjective(){
-            return this.objective
+            return this.objective;
         }
 
         setObjective(objective){
-            this.objective = objective
+            this.objective = objective;
         }
 
         copy() {
 
-            let copy = new Particle()
+            let copy = new Particle();
 
-            copy.setObjective(this.getObjective())
-            copy.setPosition(this.getPosition().slice(0))
-            copy.setVelocity(this.getVelocity().slice(0))
+            copy.setObjective(this.getObjective());
+            copy.setPosition(this.getPosition().slice(0));
+            copy.setVelocity(this.getVelocity().slice(0));
             
-            return copy
+            return copy;
         }
-    }
+    };
 
 });
