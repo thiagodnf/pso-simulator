@@ -4,10 +4,13 @@
 	"description": "A Web-based Particle Swarm Optimization Simulator",
 	"main": "server.js",
 	"scripts": {
-		"start": "node server.js"
+		"dev": "node server.js",
+		"lint": "npx eslint .",
+		"lint-fix": "npx eslint . --fix",
+		"update-dependencies": "ncu -u"
 	},
 	"engines": {
-		"node": ">=8.9.1"
+		"node": ">=16.0.0"
 	},
 	"repository": {
 		"type": "git",
@@ -17,10 +20,11 @@
 	"license": "MIT",
 	"homepage": "https://thiagodnf.github.io/pso-simulator",
 	"dependencies": {
-		"serve-static": "^1.13.2",
-		"connect": "^3.6.6",
-		"network": "^0.4.1",
-		"winston": "^2.4.2",
-		"livereload": "^0.7.0"
+		"serve-static": "1.15.0",
+		"connect": "3.7.0",
+		"eslint": "8.29.0",
+		"network": "0.6.1",
+		"winston": "3.8.2",
+		"livereload": "0.9.3"
 	}
 }

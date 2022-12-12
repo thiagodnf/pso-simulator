@@ -1,12 +1,12 @@
 var connect = require('connect');
     serveStatic = require('serve-static');
     network = require('network');
-	port = process.env.PORT || 8080;
+	port = process.env.PORT || 3000;
     project = require('./package.json');
     winston = require('winston');
     liveReload = require('livereload');
 
-connect().use("/"+project.name, serveStatic(__dirname)).listen(port);
+connect().use(serveStatic(__dirname)).listen(port);
 
 var liveReloadServer = liveReload.createServer();
 liveReloadServer.watch(__dirname);
