@@ -8,7 +8,7 @@ A Web-based Particle Swarm Optimization Simulator
 
 ## Questions or Suggestions
 
-Feel free to create <a href="./issues">issues</a> here as you need
+Feel free to create <a href="issues">issues</a> here as you need
 
 ## Contribute
 
@@ -18,7 +18,7 @@ Contributions to the this project are very welcome! We can't do this alone! Feel
 
 * **Thiago Ferreira** - *Initial work*
 
-See also the list of [contributors](./graphs/contributors) who participated in this project.
+See also the list of [contributors](graphs/contributors) who participated in this project.
 
 ## License
 
